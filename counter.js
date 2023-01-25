@@ -1,47 +1,19 @@
-// sessionStorage è una memoria a "breve-termine"
-// tutto il contenuto di sessionStorage viene svuotato ogni volta che si chiude il tab
-// o la finestra
 
-// sessionStorage.getItem('lastCounterValue') tornerà una stringa o null
+const myTimer = document.getElementById('counter')
+const start = document.querySelector('button')
+
 let counterValue = parseInt(sessionStorage.getItem('lastCounterValue')) || 0
-// devo controllare se esiste nello storage 'lastCounterValue', e se presente
-// il valore iniziale di counterValue deve essere preso da lì!
+
+let counter = 0
 const assignCounterToDOM = function () {
   // qua la definisco
-  paragraphReference.innerText = counterValue
+  myTimer.innerHTML= counterValue
+
 }
+const increaseCounter = setInterval(function(){
+    counterValue ++
+    assignCounterToDOM()
+    sessionStorage.setItem('lastcountervalue', counterValue)
+}, 1000)
 
-const paragraphReference = document.getElementById('counter')
-const buttonReference = document.querySelector('button') // <-- va a prendere il primo elemento con tag <button>
-
-assignCounterToDOM() // qua la eseguo, la prima volta
-
-const increaseCounter = function () {
-  counterValue = counterValue + 1 
-  // counterValue++ // shorthand per fare la stessa cosa con meno caratteri
-  //   counterValue += 1 // altra shorthand per fare di nuovo la stessa cosa
-  console.log(counterValue)
-  assignCounterToDOM() // qua la eseguo
-  sessionStorage.setItem('lastCounterValue', counterValue)
-}
-
-buttonReference.onclick = increaseCounter
-
-
-
-
-
-// var timer;
-// var ele = document.getElementById('timer');
-
-// (function (){
-//   var sec = 0;
-//   timer = setInterval(()=>{
-//     ele.innerHTML = '00:'+sec;
-//     sec ++;
-//   }, 1000) // each 1 second
-// })() 
-
-// function pause(){
-//   clearInterval(timer);
-// }
+start.onclick = increaseCounter
