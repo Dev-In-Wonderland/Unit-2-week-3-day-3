@@ -16,4 +16,4 @@ const increaseCounter = setInterval(function(){
     sessionStorage.setItem('lastcountervalue', counterValue)
 }, 1000)
 
-start.onclick = increaseCounter
+

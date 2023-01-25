@@ -95,7 +95,7 @@ let retrievedAlbums = JSON.parse(retrievedAlbumsAsString)
 console.log(retrievedAlbums[1])
 
 
-// Se scommento queste righe di codice il localStorage si svuota
-// localStorage.removeItem("albums-json")
-// let currentJSONNow = localStorage.getItem('albums-json')
-// console.log(currentJSONNow)
+ //Se scommento queste righe di codice il localStorage si svuota
+ localStorage.removeItem("albums-json")
+ let currentJSONNow = localStorage.getItem('albums-json')
+ console.log(currentJSONNow)
